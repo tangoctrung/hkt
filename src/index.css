@@ -41,3 +41,25 @@ h6 {
   box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
     rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
+
+.slick-prev,
+.slick-next {
+  z-index: 10;
+  display: block !important;
+  top: 40%;
+  transform: translateY(-50%);
+}
+
+.slick-prev {
+  left: 5px;
+}
+.slick-next {
+  right: 5px;
+}
+
+/* Trong global styles hoặc index.css */
+.slick-prev:before,
+.slick-next:before {
+  color: #000 !important;
+  font-size: 24px;
+}

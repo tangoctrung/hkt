@@ -9,6 +9,8 @@ import { TOKEN_FAKE } from './constant';
 import { updateAuthUser } from './store/features/userSlice';
 import Register from './pages/auth/Register';
 import { getInfoUser } from './endpoint/auth';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 // REACT_APP_API_URL=http://apigateway-xplat-sm.apps.xplat.fis.com.vn/
 function App() {

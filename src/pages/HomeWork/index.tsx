@@ -8,7 +8,7 @@ import { updateAuthUser } from '../../store/features/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../store/store';
 import { NO_AVATAR } from '../../endpoint/config';
-import QuickOverview from '../QuickOverview';
+import DashboardGA from '../DashboardGA';
 import ReportUser from '../ReportUser';
 import ReportOther from '../ReportOther';
 
@@ -119,7 +119,7 @@ const HomeWork: React.FC = () => {
         </Header>
         <Content style={{ margin: '24px 16px 0' }}>
           <div style={{ padding: 24, background: colorBgContainer }} className="h-[calc(100vh-100px)]">
-            {tab === "2" && <QuickOverview />}
+            {tab === "2" && <DashboardGA />}
             {tab === "3" && <ReportUser />}
             {tab === "4" && <ReportOther />}
           </div>
