@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { TeamOutlined, BankOutlined, AreaChartOutlined, DatabaseOutlined, SettingOutlined, FileProtectOutlined, FileTextOutlined } from '@ant-design/icons';
+import { InsertRowAboveOutlined, UserSwitchOutlined, DotChartOutlined } from '@ant-design/icons';
 import { Layout, Menu, theme } from 'antd';
 import { Button } from 'antd';
 import type { MenuProps } from 'antd';
@@ -8,14 +8,9 @@ import { updateAuthUser } from '../../store/features/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../store/store';
 import { NO_AVATAR } from '../../endpoint/config';
-import ManagerStaff from '../ManagerStaff';
-import ManagerCustomer from '../ManagerCustomer';
-import ManagerOrder from '../ManagerOrder';
-import ReportRevenue from '../ReportRevenue';
-import ReportInventory from '../ReportInventory';
-import SettingSystem from '../SettingSystem';
-import ManagerInvoice from '../ManagerInvoice';
-import ManagerProduct from '../ManagerProduct';
+import QuickOverview from '../QuickOverview';
+import ReportUser from '../ReportUser';
+import ReportOther from '../ReportOther';
 
 type MenuItem = Required<MenuProps>['items'][number];
 const { Header, Content, Sider } = Layout;
@@ -48,9 +43,9 @@ const HomeWork: React.FC = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate();
   const items: MenuItem[] = [
-    getItem('Quản lý nhân viên', '2', <TeamOutlined />),
-    getItem('Quản lý khách hàng', '3', <DatabaseOutlined />),
-    getItem('Quản lý đơn hàng', '4', <BankOutlined />),
+    getItem('Tổng quan nhanh', '2', <InsertRowAboveOutlined />),
+    getItem('Báo cáo người dùng', '3', <UserSwitchOutlined />),
+    getItem('Báo cáo khác', '4', <DotChartOutlined />),
   ];
   const handleSwitchTab = (e: any) => {
     setTab(e?.key)
@@ -71,11 +66,11 @@ const HomeWork: React.FC = () => {
   const displayTitleTab = () => {
     switch (tab) {
       case "2":
-        return "Quản lý nhân viên"
+        return "Tổng quan nhanh"
       case "3":
-        return "Quản lý khách hàng"
+        return "Báo cáo người dùng"
       case "4":
-        return "Quản lý đơn hàng"
+        return "Báo cáo khác"
       default:
         return "Hệ thống"
     }
@@ -97,8 +92,8 @@ const HomeWork: React.FC = () => {
       >
         <div className="mb-[20px] flex flex-col items-center text-white">
           <img src={authUser?.avatar || NO_AVATAR} alt='avatar' className='w-20 h-20 rounded-full object-cover' />
-          <b className='text-lg'>{authUser?.username || "Tạ Ngọc Trung"}</b>
-          <p>Chúc mừng bạn trở lại</p>
+          <b className='text-lg'>{authUser?.username || "admin"}</b>
+          <p>Chào mừng bạn trở lại</p>
         </div>
         <Menu
           theme="dark"
@@ -124,9 +119,9 @@ const HomeWork: React.FC = () => {
         </Header>
         <Content style={{ margin: '24px 16px 0' }}>
           <div style={{ padding: 24, background: colorBgContainer }} className="h-[calc(100vh-100px)]">
-            {tab === "2" && <ManagerStaff />}
-            {tab === "3" && <ManagerCustomer />}
-            {tab === "4" && <ManagerOrder />}
+            {tab === "2" && <QuickOverview />}
+            {tab === "3" && <ReportUser />}
+            {tab === "4" && <ReportOther />}
           </div>
         </Content>
       </Layout>

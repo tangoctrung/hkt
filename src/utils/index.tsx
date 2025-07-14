@@ -21,3 +21,7 @@ export function formatDateToTimestring(date: string) {
 
   return year + "-" + month + "-" + day;
 }
+
+export function validateEmail(email: string) {
+  return (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email))
+}

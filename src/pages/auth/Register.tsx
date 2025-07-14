@@ -6,7 +6,7 @@ import { Button } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { NotificationPlacement } from 'antd/es/notification/interface';
 import { registerUser } from '../../endpoint/auth';
-import { DataRegisterRequest } from '../../types/DataRequest';
+import { validateEmail } from '../../utils';
 const Context = React.createContext({ name: 'Default' });
 
 function Register() {
@@ -38,7 +38,7 @@ function Register() {
     if (data.email === "" || data.password === "") {
       return "Bạn chưa điền đầy đủ thông tin, hãy kiểm tra lại"
     }
-    if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(data.email))) {
+    if (!validateEmail(data.email)) {
       return "Email không hợp lệ, hãy kiểm tra lại"
     }
     if (data.password?.length < 8) {
