@@ -19,35 +19,37 @@ function getItem(
   label: React.ReactNode,
   key: React.Key,
   icon?: React.ReactNode,
+  title?: string | null,
   children?: MenuItem[],
   type?: 'group',
 ): MenuItem {
   return {
     key,
     icon,
+    title,
     children,
     label,
     type,
   } as MenuItem;
 }
 
-
-
 const HomeWork: React.FC = () => {
   const {
-    token: { colorBgContainer },
+    token: { colorBgContainer, colorBgLayout },
   } = theme.useToken();
   const { authUser } = useSelector((state: RootState) => state.user);
-
+  const [collapsed, setCollapsed] = useState(true);
   const [tab, setTab] = useState<string>("2")
+
   const dispatch = useDispatch()
   const navigate = useNavigate();
   const items: MenuItem[] = [
-    getItem('Tổng quan nhanh', '2', <InsertRowAboveOutlined />),
-    getItem('Báo cáo người dùng', '3', <UserSwitchOutlined />),
-    getItem('Báo cáo khác', '4', <DotChartOutlined />),
+    getItem('Tổng quan nhanh', '2', <InsertRowAboveOutlined />, null),
+    getItem('Báo cáo người dùng', '3', <UserSwitchOutlined />, null),
+    getItem('Báo cáo khác', '4', <DotChartOutlined />, null),
   ];
   const handleSwitchTab = (e: any) => {
+    setCollapsed(true)
     setTab(e?.key)
   }
 
@@ -77,18 +79,22 @@ const HomeWork: React.FC = () => {
   }
 
   return (
-    <Layout style={{ height: "100vh" }}>
+    <Layout style={{ height: "100vh", position: 'relative' }}>
       <Sider
-        breakpoint="lg"
-        collapsedWidth="0"
-        width={300}
-        onBreakpoint={(broken) => {
-          console.log(broken);
+        collapsible
+        collapsed={collapsed}
+        onCollapse={(value) => setCollapsed(value)}
+        collapsedWidth={0}
+        width={260}
+        style={{
+          padding: "20px",
+          maxWidth: "200px",
+          position: "absolute",
+          height: "100vh",
+          zIndex: 1000,
+          left: 0,
+          top: 0,
         }}
-        onCollapse={(collapsed, type) => {
-          console.log(collapsed, type);
-        }}
-        style={{ padding: "20px", maxWidth: "300px" }}
       >
         <div className="mb-[20px] flex flex-col items-center text-white">
           <img src={authUser?.avatar || NO_AVATAR} alt='avatar' className='w-20 h-20 rounded-full object-cover' />
@@ -117,8 +123,8 @@ const HomeWork: React.FC = () => {
             </div>
           </div>
         </Header>
-        <Content style={{ margin: '24px 16px 0' }}>
-          <div style={{ padding: 24, background: colorBgContainer }} className="h-[calc(100vh-100px)]">
+        <Content style={{ margin: '0 0 0 30px' }}>
+          <div style={{ padding: 0, paddingLeft: 12, background: colorBgLayout }} className="h-[calc(100vh-100px)]">
             {tab === "2" && <DashboardGA />}
             {tab === "3" && <ReportUser />}
             {tab === "4" && <ReportOther />}

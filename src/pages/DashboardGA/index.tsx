@@ -5,7 +5,7 @@ import SuggestedSection from '../../components/Dasboard/SuggestedSection';
 
 export default function DashboardGA() {
     return (
-        <div className="p-4 space-y-6 w-full h-full overflow-y-scroll viewScroll">
+        <div className="p-4 space-y-6 w-full h-full overflow-x-hidden overflow-y-scroll viewScroll">
             <OverviewCards />
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">

@@ -3,7 +3,7 @@ import LineChart from '../Chart/LineChart';
 
 export default function UserRetentionChart() {
     return (
-        <Card title="User retention" className='h-[400px]'>
+        <Card title="User retention" className='h-[400px]' bodyStyle={{ height: "350px" }}>
             <LineChart title="day" />
         </Card>
     );

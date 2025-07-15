@@ -41,24 +41,24 @@ export default function SuggestedSection() {
     if (!ready) return null;
 
     return (
-        <div className="mt-6 w-[96%]">
-            <Slider {...settings}>
-                <div className="p-4 min-w-0 overflow-hidden h-[400px]">
+        <div className="mt-6 w-full overflow-hidden h-full">
+            <Slider {...settings} className='w-full'>
+                <div className="p-[10px] min-w-0 overflow-hidden h-[420px]">
                     <RetentionByCohortChart />
                 </div>
-                <div className="p-4 min-w-0 overflow-hidden h-[400px]">
+                <div className="p-[10px] min-w-0 overflow-hidden h-[420px]">
                     <UserRetentionChart />
                 </div>
-                <div className="p-4 min-w-0 overflow-hidden h-[400px]">
+                <div className="p-[10px] min-w-0 overflow-hidden h-[420px]">
                     <NewUsersByChannelChart />
                 </div>
-                <div className="p-4 min-w-0 overflow-hidden h-[400px]">
+                <div className="p-[10px] min-w-0 overflow-hidden h-[420px]">
                     <EventCountChart />
                 </div>
-                <div className="p-4 min-w-0 overflow-hidden h-[400px]">
+                <div className="p-[10px] min-w-0 overflow-hidden h-[420px]">
                     <UserActivityChart />
                 </div>
-                <div className="p-4 min-w-0 overflow-hidden h-[400px]">
+                <div className="p-[10px] min-w-0 overflow-hidden h-[420px]">
                     <ActiveUsersByCountryChart />
                 </div>
             </Slider >
