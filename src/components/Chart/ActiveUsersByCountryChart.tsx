@@ -31,9 +31,9 @@ export default function ActiveUsersByCountryChart() {
     });
 
     return (
-        <Card title="Active users by Country" className='h-[400px]' bodyStyle={{ height: "350px" }}>
+        <Card title="Active users by Country" className='h-[400px]'>
             <div className="flex flex-col md:flex-row gap-6">
-                <div className="flex-1 min-h-[350px] h-full bg-white rounded-md shadow-sm overflow-hidden">
+                <div className="flex-1 min-h-[400px] bg-white rounded-md shadow-sm overflow-hidden">
                     <VectorMap
                         map={worldMill}
                         backgroundColor="#ffffff"
