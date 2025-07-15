@@ -1,28 +1,31 @@
 import React from 'react'
+import OverviewCards from '../../components/Dasboard/OverviewCards';
+import EventCountChart from '../../components/Chart/EventCountChart';
+import ActiveUsersByCountryChart from '../../components/Dasboard/Components/ActiveUsersByCountryChart';
+import RetentionByCohortChart from '../../components/Dasboard/Components/RetentionByCohortChart';
+import NumberGenderUserChart from '../../components/ReportUser/NumberGenderUserChart';
 
 function ReportUser() {
-  // useEffect(() => {
-  //   setIsLoading(true)
-  //   getCustomers()
-  //     .then((res) => {
-  //       let customers = [...res?.data?.data?.customers]
-  //       let customers1 = customers?.map((item: any, index: number) => {
-  //         return { stt: index + 1, ...item }
-  //       })
-  //       setDataCustomers(customers1)
-  //       setDataCustomersReal(customers1)
-  //     })
-  //     .catch((err) => {
-  //       console.log({ err });
-  //     })
-  //     .finally(() => {
-  //       setIsLoading(false)
-  //     })
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [])
   return (
-    <div className='w-full h-full'>
-      ReportUser
+    <div className="p-4 space-y-6 w-full h-full overflow-x-hidden overflow-y-scroll viewScroll">
+      <OverviewCards />
+
+      <div className='mt-4 w-full gap-6 flex flex-col md:flex-row'>
+        <div className="w-[70%] p-[10px] overflow-hidden h-[400px]">
+          <RetentionByCohortChart />
+        </div>
+        <div className="w-[30%] p-[10px] overflow-hidden h-[400px]">
+          <NumberGenderUserChart />
+        </div>
+      </div>
+      <div className='mt-4 w-full gap-6 flex flex-col md:flex-row'>
+        <div className='w-full md:w-[70%]'>
+          <ActiveUsersByCountryChart />
+        </div>
+        <div className='w-full md:w-[30%]'>
+          <EventCountChart />
+        </div>
+      </div>
     </div>
   )
 }

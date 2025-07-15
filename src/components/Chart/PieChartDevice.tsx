@@ -4,7 +4,7 @@ import { Pie } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
-export const data = {
+export const dataExample = {
   labels: ['Web', 'iOS', 'Android', 'ChromeOS'],
   datasets: [
     {
@@ -44,9 +44,11 @@ const options = {
   },
 };
 
-function PieChart() {
+function PieChart({
+  data
+}: { data?: any }) {
   return (
-    <Pie data={data} options={options} />
+    <Pie data={data || dataExample} options={options} />
   )
 }
 
