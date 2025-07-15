@@ -41,7 +41,7 @@ export default function SuggestedSection() {
     if (!ready) return null;
 
     return (
-        <div className="mt-6">
+        <div className="mt-6 w-[96%]">
             <Slider {...settings}>
                 <div className="p-4 min-w-0 overflow-hidden h-[400px]">
                     <RetentionByCohortChart />

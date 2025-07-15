@@ -51,10 +51,10 @@ h6 {
 }
 
 .slick-prev {
-  left: 5px;
+  left: 10px !important;
 }
 .slick-next {
-  right: 5px;
+  right: 0px !important;
 }
 
 /* Trong global styles hoặc index.css */
