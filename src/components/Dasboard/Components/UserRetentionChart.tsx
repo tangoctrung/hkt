@@ -1,5 +1,5 @@
 import { Card } from 'antd';
-import LineChart from '../Chart/LineChart';
+import LineChart from '../../Chart/LineChart';
 
 export default function UserRetentionChart() {
     return (

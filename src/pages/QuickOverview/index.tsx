@@ -1,7 +1,7 @@
 import React from 'react'
 import { DatePicker } from 'antd';
 import LineChart from '../../components/Chart/LineChart';
-import PieChart from '../../components/Chart/PieChart';
+import PieChart from '../../components/Chart/PieChartDevice';
 import DoughnutChart from '../../components/Chart/DoughnutChart';
 
 const { RangePicker } = DatePicker;

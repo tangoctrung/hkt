@@ -1,7 +1,7 @@
 import { Card, Table } from 'antd';
 import { VectorMap } from '@react-jvectormap/core';
 import { worldMill } from '@react-jvectormap/world';
-import { mockActiveUsersByCountry } from '../../utils/data/countryActiveUsers';
+import { mockActiveUsersByCountry } from '../../../utils/data/countryActiveUsers';
 
 export default function ActiveUsersByCountryChart() {
     const columns = [
@@ -31,13 +31,14 @@ export default function ActiveUsersByCountryChart() {
     });
 
     return (
-        <Card title="Active users by Country" className='h-[400px]'>
-            <div className="flex flex-col md:flex-row gap-6">
-                <div className="flex-1 min-h-[400px] bg-white rounded-md shadow-sm overflow-hidden">
+        <Card title="Active users by Country" className='viewScrollNone h-[400px] w-full overflow-y-scroll '>
+            <div className="flex flex-col md:flex-row gap-3">
+                <div className="w-full md:w-[66%] h-[316px] bg-white rounded-md shadow-sm overflow-hidden">
                     <VectorMap
                         map={worldMill}
                         backgroundColor="#ffffff"
                         zoomOnScroll={false}
+                        className='h-full'
                         regionStyle={{
                             initial: {
                                 fill: '#e4e4e4',
@@ -62,7 +63,7 @@ export default function ActiveUsersByCountryChart() {
                         }}
                     />
                 </div>
-                <div className="flex-1">
+                <div className="w-full md:w-[33%]">
                     <Table
                         dataSource={mockActiveUsersByCountry}
                         columns={columns}

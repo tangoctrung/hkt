@@ -36,7 +36,10 @@ function LineChart({
       },
       title: {
         display: true,
-        text: title,
+        text: "",
+      },
+      datalabels: {
+        display: false, // 👈 tắt hiện label trên điểm
       },
     },
   };
@@ -47,26 +50,26 @@ function LineChart({
       {
         label: 'Đăng nhập',
         data: labels.map(() => faker.datatype.number({ min: 0, max: 100000 })),
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        borderColor: '#0088FE',
+        backgroundColor: '#0088FE90',
       },
       {
         label: 'Đăng ký',
         data: labels.map(() => faker.datatype.number({ min: 0, max: 100000 })),
-        borderColor: 'rgb(53, 162, 235)',
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
+        borderColor: '#00C49F',
+        backgroundColor: '#00C49F90',
       },
       {
         label: 'Lượt chơi',
         data: labels.map(() => faker.datatype.number({ min: 0, max: 100000 })),
-        borderColor: 'rgb(153, 162, 235)',
-        backgroundColor: 'rgba(153, 162, 235, 0.5)',
+        borderColor: '#FFBB28',
+        backgroundColor: '#FFBB2890',
       },
       {
         label: 'Mua vật phẩm',
         data: labels.map(() => faker.datatype.number({ min: 0, max: 100000 })),
-        borderColor: 'rgb(253, 162, 235)',
-        backgroundColor: 'rgba(253, 162, 235, 0.5)',
+        borderColor: '#FF8042',
+        backgroundColor: '#FF804290',
       },
     ],
   };

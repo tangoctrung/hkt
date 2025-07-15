@@ -1,11 +1,9 @@
-import RetentionByCohortChart from '../Chart/RetentionByCohortChart';
-import UserRetentionChart from '../Chart/UserRetentionChart';
-import NewUsersByChannelChart from '../Chart/NewUsersByChannelChart';
-import EventCountChart from '../Chart/EventCountChart';
-import UserActivityChart from '../Chart/UserActivityChart';
-import ActiveUsersByCountryChart from '../Chart/ActiveUsersByCountryChart';
-import Slider from 'react-slick';
 import { useEffect, useState } from 'react';
+import Slider from 'react-slick';
+import RetentionByCohortChart from './Components/RetentionByCohortChart';
+import UserRetentionChart from './Components/UserRetentionChart';
+import NewUsersByChannelChart from './Components/NewUsersByChannelChart';
+import UserActivityChart from './Components/UserActivityChart';
 
 const settings = {
     dots: true,
@@ -53,13 +51,7 @@ export default function SuggestedSection() {
                     <NewUsersByChannelChart />
                 </div>
                 <div className="p-[10px] min-w-0 overflow-hidden h-[420px]">
-                    <EventCountChart />
-                </div>
-                <div className="p-[10px] min-w-0 overflow-hidden h-[420px]">
                     <UserActivityChart />
-                </div>
-                <div className="p-[10px] min-w-0 overflow-hidden h-[420px]">
-                    <ActiveUsersByCountryChart />
                 </div>
             </Slider >
         </div >
