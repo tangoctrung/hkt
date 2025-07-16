@@ -48,7 +48,7 @@ function PieChart({
   data
 }: { data?: any }) {
   return (
-    <Pie data={data || dataExample} options={options} />
+    <Pie data={data || dataExample} options={options} className='h-full w-full' />
   )
 }
 

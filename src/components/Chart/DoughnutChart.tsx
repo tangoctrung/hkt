@@ -38,7 +38,7 @@ const options = {
 
 function DoughnutChart() {
   return (
-    <Doughnut data={data} options={options} />
+    <Doughnut data={data} options={options} className='h-full' />
   )
 }
 

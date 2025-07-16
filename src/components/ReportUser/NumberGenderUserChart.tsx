@@ -26,7 +26,9 @@ function NumberGenderUserChart() {
   };
   return (
     <Card title="Giới tính người dùng" className='h-[400px] overflow-y-scroll viewScrollNone'>
-      <PieChart data={data} />
+      <div className='max-h-[300px] flex justify-center'>
+        <PieChart data={data} />
+      </div>
     </Card>
   )
 }

@@ -47,7 +47,7 @@ const data = {
   datasets: [
     {
       label: 'Người dùng',
-      data: [1300, 700, 300, 1500],
+      data: [1300, 700, 300, 2500],
       backgroundColor: [
         '#0088FE90',
         '#0088FE90',
@@ -66,5 +66,5 @@ const data = {
 };
 
 export default function HorizontalBarChart() {
-  return <Bar options={options} data={data} />;
+  return <Bar options={options} data={data} className='w-full h-full' />;
 }
