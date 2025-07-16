@@ -11,9 +11,9 @@ export const data = {
       label: '# of Votes',
       data: [120, 158, 20,],
       backgroundColor: [
-        '#0088FE90',
-        '#00C49F90',
-        '#FFBB2890',
+        '#0088FE',
+        '#00C49F',
+        '#FFBB28',
       ],
       borderColor: [
         '#0088FE',

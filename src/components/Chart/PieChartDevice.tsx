@@ -11,10 +11,10 @@ export const dataExample = {
       label: '',
       data: [12, 19, 3, 5],
       backgroundColor: [
-        '#0088FE90',
-        '#00C49F90',
-        '#FFBB2890',
-        '#FF804290',
+        '#0088FE',
+        '#00C49F',
+        '#FFBB28',
+        '#FF8042',
       ],
       borderColor: [
         '#0088FE',

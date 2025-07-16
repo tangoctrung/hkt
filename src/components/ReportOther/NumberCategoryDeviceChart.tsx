@@ -4,7 +4,7 @@ import { Card } from 'antd'
 
 function NumberCategoryDeviceChart() {
   return (
-    <Card className='h-[480px] overflow-y-scroll viewScrollNone' title="Số người dùng hoạt động theo danh mục thiết bị">
+    <Card className='h-[480px] overflow-y-scroll viewScrollNone' title="Number of active users by device category">
       <div className='max-h-[380px] flex justify-center'>
         <DoughnutChart />
       </div>

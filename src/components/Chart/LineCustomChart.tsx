@@ -1,9 +1,12 @@
 import React from 'react'
 
-function LineCustomChart() {
+function LineCustomChart({ labelsPrimary, dataPrimary }: {
+  labelsPrimary?: string[];
+  dataPrimary?: any[]
+}) {
 
-  const labels = ["Hệ điều hành", "Số người sử dụng"]
-  const data = [
+  const labelsExample = ["Hệ điều hành", "Số người sử dụng"]
+  const dataExample = [
     {
       label: "Windows",
       value: 28
@@ -25,6 +28,10 @@ function LineCustomChart() {
       value: 22
     },
   ]
+
+  const data = dataPrimary || dataExample
+  const labels = labelsPrimary || labelsExample
+
   const total = data.reduce((sum, item) => sum + item.value, 0);
 
   return (

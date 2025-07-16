@@ -1,7 +1,7 @@
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
-export default function CustomBarChart({ dataKey }: { dataKey: string }) {
-    const data = [
+export default function CustomBarChart({ dataKey, dataPrimary }: { dataKey: string, dataPrimary?: any }) {
+    const data = dataPrimary || [
         { name: 'Direct', value: 240000 },
         { name: 'Referral', value: 80000 },
         { name: 'Organic', value: 20000 },

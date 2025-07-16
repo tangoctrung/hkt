@@ -21,7 +21,7 @@ ChartJS.register(
 );
 
 const options: ChartOptions<'bar'> = {
-  indexAxis: 'y', // 👈 biểu đồ thanh ngang
+  indexAxis: 'x', // 👈 biểu đồ thanh ngang
   responsive: true,
   plugins: {
     legend: {
@@ -38,46 +38,29 @@ const options: ChartOptions<'bar'> = {
       },
     },
   },
-  scales: {
-    y: {
-      ticks: {
-        padding: 1
-      },
-    },
-    x: {
-      ticks: {
-        padding: 1
-      },
-    },
-  },
 };
 
-
-
-export default function HorizontalBarChart({ labelsPrimary, dataPrimary }: {
+export default function VerticalBarChart({ labelsPrimary, dataPrimary }: {
   labelsPrimary?: string[];
   dataPrimary?: any[]
 }) {
+  const labelsExample = ['Chrome', 'MS Edge', 'Firefox', "Cốc cốc"];
 
-  const labels = ['Chrome', 'MS Edge', 'Firefox', "Cốc cốc"];
-  const data = {
-    labels: labelsPrimary || labels,
+  const dataExample = {
+    labels: labelsPrimary || labelsExample,
     datasets: [
       {
         label: 'Người dùng',
         data: dataPrimary || [1300, 700, 300, 2500],
         backgroundColor: [
-          '#0088FE',
+          '#0088FE90',
         ],
         borderColor: [
           '#0088FE',
         ],
         borderWidth: 1,
-        barThickness: 50,
-        categoryPercentage: 0.6, // 👈 giảm spacing giữa các rows
-        barPercentage: 0.8,
       },
     ],
   };
-  return <Bar options={options} data={data} className='w-full h-full' />;
+  return <Bar options={options} data={dataExample} className='w-full h-full' />;
 }

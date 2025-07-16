@@ -11,9 +11,9 @@ function NumberGenderUserChart() {
         label: '',
         data: [1200, 800, 200],
         backgroundColor: [
-          '#0088FE90',
-          '#00C49F90',
-          '#FFBB2890',
+          '#0088FE',
+          '#00C49F',
+          '#FFBB28',
         ],
         borderColor: [
           '#0088FE',
@@ -25,8 +25,8 @@ function NumberGenderUserChart() {
     ],
   };
   return (
-    <Card title="Giới tính người dùng" className='h-[400px] overflow-y-scroll viewScrollNone'>
-      <div className='max-h-[300px] flex justify-center'>
+    <Card title="User gender" className='h-[480px] overflow-y-scroll viewScrollNone'>
+      <div className='max-h-[380px] flex justify-center'>
         <PieChart data={data} />
       </div>
     </Card>

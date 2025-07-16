@@ -2,20 +2,28 @@ import React from 'react'
 import OverviewCards from '../../components/Dasboard/OverviewCards';
 import EventCountChart from '../../components/Chart/EventCountChart';
 import ActiveUsersByCountryChart from '../../components/Dasboard/Components/ActiveUsersByCountryChart';
-import RetentionByCohortChart from '../../components/Dasboard/Components/RetentionByCohortChart';
 import NumberGenderUserChart from '../../components/ReportUser/NumberGenderUserChart';
+import NumberUserCityChart from '../../components/ReportUser/NumberUserCityChart';
+import NumberUserLanguage from '../../components/ReportUser/NumberUserLanguage';
+import NumberUserNewAndOldChart from '../../components/ReportUser/NumberUserNewAndOldChart';
 
 function ReportUser() {
   return (
     <div className="p-4 space-y-6 w-full h-full overflow-x-hidden overflow-y-scroll viewScroll">
-      <OverviewCards />
-
       <div className='mt-4 w-full gap-6 flex flex-col md:flex-row'>
-        <div className="w-[70%] p-[10px] overflow-hidden h-[400px]">
-          <RetentionByCohortChart />
+        <div className="w-[70%] p-[10px] overflow-hidden h-[480px]">
+          <NumberUserNewAndOldChart />
         </div>
-        <div className="w-[30%] p-[10px] overflow-hidden h-[400px]">
+        <div className="w-[30%] p-[10px] overflow-hidden h-[480px]">
           <NumberGenderUserChart />
+        </div>
+      </div>
+      <div className='mt-4 w-full gap-6 flex flex-col md:flex-row'>
+        <div className="w-[50%] p-[10px] overflow-hidden h-[400px]">
+          <NumberUserCityChart />
+        </div>
+        <div className="w-[50%] p-[10px] overflow-hidden h-[400px]">
+          <NumberUserLanguage />
         </div>
       </div>
       <div className='mt-4 w-full gap-6 flex flex-col md:flex-row'>
