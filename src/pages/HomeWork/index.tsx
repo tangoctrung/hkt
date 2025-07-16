@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { InsertRowAboveOutlined, UserSwitchOutlined, DotChartOutlined } from '@ant-design/icons';
+import { InsertRowAboveOutlined, UserSwitchOutlined, DotChartOutlined, RollbackOutlined } from '@ant-design/icons';
 import { Layout, Menu, theme } from 'antd';
 import { Button } from 'antd';
 import type { MenuProps } from 'antd';
@@ -11,6 +11,7 @@ import { NO_AVATAR } from '../../endpoint/config';
 import DashboardGA from '../DashboardGA';
 import ReportUser from '../ReportUser';
 import ReportOther from '../ReportOther';
+import Retention from '../Retention';
 
 type MenuItem = Required<MenuProps>['items'][number];
 const { Header, Content, Sider } = Layout;
@@ -44,9 +45,10 @@ const HomeWork: React.FC = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate();
   const items: MenuItem[] = [
-    getItem('Tổng quan nhanh', '2', <InsertRowAboveOutlined />, null),
-    getItem('Báo cáo người dùng', '3', <UserSwitchOutlined />, null),
-    getItem('Báo cáo khác', '4', <DotChartOutlined />, null),
+    getItem('Quick overview', '2', <InsertRowAboveOutlined />, null),
+    getItem('Retention', '3', <RollbackOutlined />, null),
+    getItem('User report', '4', <UserSwitchOutlined />, null),
+    getItem('Other reports', '5', <DotChartOutlined />, null),
   ];
   const handleSwitchTab = (e: any) => {
     setCollapsed(true)
@@ -68,13 +70,15 @@ const HomeWork: React.FC = () => {
   const displayTitleTab = () => {
     switch (tab) {
       case "2":
-        return "Tổng quan nhanh"
+        return "Quick overview"
       case "3":
-        return "Báo cáo người dùng"
+        return "Retention"
       case "4":
-        return "Báo cáo khác"
+        return "User report"
+      case "5":
+        return "Other reports"
       default:
-        return "Hệ thống"
+        return "System"
     }
   }
 
@@ -126,8 +130,9 @@ const HomeWork: React.FC = () => {
         <Content style={{ margin: '0 0 0 30px' }}>
           <div style={{ padding: 0, paddingLeft: 12, background: colorBgLayout }} className="h-[calc(100vh-100px)]">
             {tab === "2" && <DashboardGA />}
-            {tab === "3" && <ReportUser />}
-            {tab === "4" && <ReportOther />}
+            {tab === "3" && <Retention />}
+            {tab === "4" && <ReportUser />}
+            {tab === "5" && <ReportOther />}
           </div>
         </Content>
       </Layout>

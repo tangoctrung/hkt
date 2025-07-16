@@ -1,11 +1,11 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-
-
-export default function LineRoundChart({ dataPrimary }: {
+export default function LineRoundChart({ dataKey, dataPrimary }: {
+  dataKey?: string[];
   dataPrimary?: any[]
 }) {
-
+  const colors = ["#0088FE", "#FFBB28"]
+  const keys = dataKey || ["oldUser", "newUser"]
   const data = [
     {
       name: 'Tháng 1',
@@ -38,12 +38,13 @@ export default function LineRoundChart({ dataPrimary }: {
       oldUser: 10000,
     },
   ];
+
   return (
     <ResponsiveContainer width="100%" height="100%">
       <LineChart
         width={500}
         height={400}
-        data={data}
+        data={dataPrimary || data}
         margin={{
           top: 5,
           right: 30,
@@ -56,8 +57,9 @@ export default function LineRoundChart({ dataPrimary }: {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="oldUser" stroke="#0088FE" activeDot={{ r: 8 }} />
-        <Line type="monotone" dataKey="newUser" stroke="#FFBB28" />
+        {keys?.map((item: string, index: number) => (
+          <Line type="monotone" dataKey={item} stroke={colors[index]} />
+        ))}
       </LineChart>
     </ResponsiveContainer>
   );

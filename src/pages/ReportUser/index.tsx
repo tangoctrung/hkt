@@ -10,18 +10,18 @@ function ReportUser() {
   return (
     <div className="p-4 space-y-6 w-full h-full overflow-x-hidden overflow-y-scroll viewScroll">
       <div className='mt-4 w-full gap-6 flex flex-col md:flex-row'>
-        <div className="w-[70%] p-[10px] overflow-hidden h-[480px]">
+        <div className="w-full md:w-[70%] p-[10px] overflow-hidden h-[480px]">
           <NumberUserNewAndOldChart />
         </div>
-        <div className="w-[30%] p-[10px] overflow-hidden h-[480px]">
+        <div className="w-full md:w-[30%] p-[10px] overflow-hidden h-[480px]">
           <NumberGenderUserChart />
         </div>
       </div>
       <div className='mt-4 w-full gap-6 flex flex-col md:flex-row'>
-        <div className="w-[50%] p-[10px] overflow-hidden h-[400px]">
+        <div className="w-full md:w-[50%] p-[10px] overflow-hidden h-[400px]">
           <NumberUserCityChart />
         </div>
-        <div className="w-[50%] p-[10px] overflow-hidden h-[400px]">
+        <div className="w-full md:w-[50%] p-[10px] overflow-hidden h-[400px]">
           <NumberUserLanguage />
         </div>
       </div>
