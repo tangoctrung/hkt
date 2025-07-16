@@ -5,10 +5,14 @@ import NumberUserCityChart from '../../components/ReportUser/NumberUserCityChart
 import NumberUserLanguage from '../../components/ReportUser/NumberUserLanguage';
 import NumberUserNewAndOldChart from '../../components/ReportUser/NumberUserNewAndOldChart';
 import NumberUserAgeChart from '../../components/ReportUser/NumberUserAgeChart';
+import TimePickerCustom from '../../components/common/TimePickerCustom';
 
 function ReportUser() {
   return (
     <div className="p-4 space-y-6 w-full h-full overflow-x-hidden overflow-y-scroll viewScroll">
+      <div className='w-full flex justify-end'>
+        <TimePickerCustom />
+      </div>
       <div className='mt-4 w-full gap-6 flex flex-col md:flex-row'>
         <div className="w-full md:w-[70%] p-[10px] overflow-hidden h-[480px]">
           <NumberUserNewAndOldChart />

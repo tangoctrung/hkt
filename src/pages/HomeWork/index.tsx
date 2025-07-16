@@ -36,7 +36,7 @@ function getItem(
 
 const HomeWork: React.FC = () => {
   const {
-    token: { colorBgContainer, colorBgLayout },
+    token: { colorBgContainer },
   } = theme.useToken();
   const { authUser } = useSelector((state: RootState) => state.user);
   const [collapsed, setCollapsed] = useState(true);
@@ -128,7 +128,7 @@ const HomeWork: React.FC = () => {
           </div>
         </Header>
         <Content style={{ margin: '0 0 0 30px' }}>
-          <div style={{ padding: 0, paddingLeft: 12, background: colorBgLayout }} className="h-[calc(100vh-100px)]">
+          <div style={{ padding: 0, paddingLeft: 12, background: "#edf0ef" }} className="h-[calc(100vh-66px)]">
             {tab === "2" && <DashboardGA />}
             {tab === "3" && <Retention />}
             {tab === "4" && <ReportUser />}

@@ -33,7 +33,7 @@ function NumberUserAgeChart() {
   ]
 
   return (
-    <Card className='h-[480px] overflow-y-scroll viewScrollNone' title="Number of active users by city">
+    <Card className='shadow-md h-[480px] overflow-y-scroll viewScrollNone' title="Number of active users by city">
       <LineCustomChart dataPrimary={dataExample} labelsPrimary={labelsExample} />
     </Card>
   )

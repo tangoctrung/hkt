@@ -4,7 +4,7 @@ import LineRoundChart from '../Chart/LineRoundChart'
 
 function NumberUserNewAndOldChart() {
   return (
-    <Card className='h-[480px] overflow-y-scroll viewScrollNone' title="Number of old and new users">
+    <Card className='shadow-md h-[480px] overflow-y-scroll viewScrollNone' title="Number of old and new users">
       <div className='h-[380px] flex justify-center'>
         <LineRoundChart />
       </div>

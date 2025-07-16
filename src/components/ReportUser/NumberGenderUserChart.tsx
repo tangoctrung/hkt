@@ -25,7 +25,7 @@ function NumberGenderUserChart() {
     ],
   };
   return (
-    <Card title="User gender" className='h-[480px] overflow-y-scroll viewScrollNone'>
+    <Card title="User gender" className='shadow-md h-[480px] overflow-y-scroll viewScrollNone'>
       <div className='max-h-[380px] flex justify-center'>
         <PieChart data={data} />
       </div>

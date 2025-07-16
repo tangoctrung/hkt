@@ -35,7 +35,7 @@ function PercentRetentionUserChart() {
     },
   ];
   return (
-    <Card className='h-[480px] overflow-y-scroll viewScrollNone' title="Percent user retention">
+    <Card className='shadow-md h-[480px] overflow-y-scroll viewScrollNone' title="Percent user retention">
       <div className='h-[380px] flex justify-center'>
         <SimpleAreaChart dataPrimary={dataExample} unit='%' />
       </div>

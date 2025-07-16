@@ -16,6 +16,11 @@ h6 {
   background-color: #1677ff !important;
 }
 
+.ant-picker-focused {
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
 #components-layout-demo-responsive .logo {
   height: 32px;
   margin: 16px;

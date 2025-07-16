@@ -4,7 +4,7 @@ import HorizontalBarChart from '../Chart/HorizontalBarChart'
 
 function NumberUserActiveBrower() {
   return (
-    <Card className='h-[480px] overflow-y-scroll viewScrollNone' title="Number of active users by browser">
+    <Card className='shadow-md h-[480px] overflow-y-scroll viewScrollNone' title="Number of active users by browser">
       <div className='max-h-[380px] w-full'>
         <HorizontalBarChart />
       </div>
