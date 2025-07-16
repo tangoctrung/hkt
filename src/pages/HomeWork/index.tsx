@@ -112,7 +112,7 @@ const HomeWork: React.FC = () => {
       <Layout>
         <Header style={{ padding: 0, background: colorBgContainer }} >
           <div className='w-full h-full flex justify-between px-10'>
-            <div className='flex items-center text-xl font-semibold'>
+            <div className='flex items-center text-xl font-semibold px-6'>
               {displayTitleTab()}
             </div>
             <div className='flex items-center'>
