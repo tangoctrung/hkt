@@ -14,7 +14,9 @@ function NumberUserLanguage() {
   ];
   return (
     <Card className='h-[400px] overflow-y-scroll viewScrollNone' title="Users active by language">
-      <CustomBarChart dataKey='NumberUserLanguage' dataPrimary={dataExample} />
+      <div className='w-full flex justify-center'>
+        <CustomBarChart dataKey='NumberUserLanguage' dataPrimary={dataExample} />
+      </div>
     </Card>
   )
 }

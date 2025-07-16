@@ -31,7 +31,7 @@ export default function ActiveUsersByCountryChart() {
     });
 
     return (
-        <Card title="Active users by Country" className='viewScrollNone h-[400px] w-full overflow-y-scroll '>
+        <Card title="Active users by Country" className='viewScrollNone h-[480px] w-full overflow-y-scroll '>
             <div className="flex flex-col md:flex-row gap-3">
                 <div className="w-full md:w-[66%] h-[316px] bg-white rounded-md shadow-sm overflow-hidden">
                     <VectorMap

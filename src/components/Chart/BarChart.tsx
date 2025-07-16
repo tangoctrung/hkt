@@ -8,12 +8,12 @@ export default function CustomBarChart({ dataKey, dataPrimary }: { dataKey: stri
     ];
 
     return (
-        <ResponsiveContainer width="100%" height={250}>
+        <ResponsiveContainer width="80%" height={300}>
             <BarChart data={data}>
                 <XAxis dataKey="name" />
                 <YAxis />
                 <Tooltip />
-                <Bar dataKey="value" fill="#1677ff" />
+                <Bar dataKey="value" fill="#1677ff" barSize={50} />
             </BarChart>
         </ResponsiveContainer>
     );

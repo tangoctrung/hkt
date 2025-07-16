@@ -1,11 +1,10 @@
 import React from 'react'
-import OverviewCards from '../../components/Dasboard/OverviewCards';
-import EventCountChart from '../../components/Chart/EventCountChart';
 import ActiveUsersByCountryChart from '../../components/Dasboard/Components/ActiveUsersByCountryChart';
 import NumberGenderUserChart from '../../components/ReportUser/NumberGenderUserChart';
 import NumberUserCityChart from '../../components/ReportUser/NumberUserCityChart';
 import NumberUserLanguage from '../../components/ReportUser/NumberUserLanguage';
 import NumberUserNewAndOldChart from '../../components/ReportUser/NumberUserNewAndOldChart';
+import NumberUserAgeChart from '../../components/ReportUser/NumberUserAgeChart';
 
 function ReportUser() {
   return (
@@ -31,7 +30,7 @@ function ReportUser() {
           <ActiveUsersByCountryChart />
         </div>
         <div className='w-full md:w-[30%]'>
-          <EventCountChart />
+          <NumberUserAgeChart />
         </div>
       </div>
     </div>
