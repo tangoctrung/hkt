@@ -16,7 +16,13 @@ const isSameRange = (a?: [Dayjs, Dayjs], b?: [Dayjs, Dayjs]) => {
   );
 };
 
-export default function TimePickerCustom() {
+export default function TimePickerCustom({
+  rangeValue,
+  setRangeValue
+}: {
+  rangeValue?: [fromDate: Dayjs, toDate: Dayjs];
+  setRangeValue?: (rangeDate: [fromDate: Dayjs, toDate: Dayjs]) => void;
+}) {
   const presets: {
     label: string;
     value: [Dayjs, Dayjs];
@@ -80,15 +86,16 @@ export default function TimePickerCustom() {
       },
     ];
 
-  const defaultRange: [Dayjs, Dayjs] = [
-    dayjs().subtract(7, 'day').startOf('day'),
-    dayjs().endOf('day'),
-  ];
+  // const defaultRange: [Dayjs, Dayjs] = [
+  //   dayjs().subtract(7, 'day').startOf('day'),
+  //   dayjs().endOf('day'),
+  // ];
 
-  const [rangeValue, setRangeValue] = useState<[Dayjs, Dayjs] | null>(defaultRange);
+  // const [rangeValue, setRangeValue] = useState<[Dayjs, Dayjs] | null>(defaultRange);
   const [label, setLabel] = useState<string>('7 ngày trước');
 
   const handleChange = (value: any) => {
+    if (!setRangeValue) return;
     if (value && value[0] && value[1]) {
       setRangeValue(value as [Dayjs, Dayjs]);
 
@@ -97,7 +104,7 @@ export default function TimePickerCustom() {
       );
       setLabel(found?.label || 'Tuỳ chỉnh');
     } else {
-      setRangeValue(null);
+      // setRangeValue(null);
       setLabel('');
     }
   };
