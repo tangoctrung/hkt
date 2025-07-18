@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateAuthUser } from '../../store/features/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../store/store';
-import { NO_AVATAR } from '../../endpoint/config';
 import DashboardGA from '../DashboardGA';
 import ReportUser from '../ReportUser';
 import ReportOther from '../ReportOther';

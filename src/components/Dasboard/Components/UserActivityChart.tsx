@@ -32,7 +32,7 @@ export default function UserActivityChart({
 
     return (
         <Card title="User activity over time" className='h-full' bodyStyle={{ height: "350px" }}>
-            <LineRoundChart dataKey={dataKey} dataPrimary={dataPrimary} />
+            <LineRoundChart dataKey={dataKey} dataPrimary={dataPrimary} typeTooltip="nocustom" />
         </Card>
     );
 }

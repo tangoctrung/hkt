@@ -1,8 +1,9 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-export default function LineRoundChart({ dataKey, dataPrimary }: {
+export default function LineRoundChart({ dataKey, dataPrimary, typeTooltip }: {
   dataKey?: string[];
-  dataPrimary?: any[]
+  dataPrimary?: any[];
+  typeTooltip?: string;
 }) {
   const colors = ["#0088FE", "#FFBB28"]
   const keys = dataKey || ["oldUser", "newUser"]
@@ -57,6 +58,7 @@ export default function LineRoundChart({ dataKey, dataPrimary }: {
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />
+        {typeTooltip === "nocustom" ? <Tooltip /> : <Tooltip content={<CustomTooltip />} />}
         <Tooltip />
         <Legend />
         {keys?.map((item: string, index: number) => (
