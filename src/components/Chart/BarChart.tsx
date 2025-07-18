@@ -7,13 +7,21 @@ export default function CustomBarChart({ dataKey, dataPrimary }: { dataKey: stri
         { name: 'Organic', value: 20000 },
     ];
 
+    const setWidthBar = () => {
+        if (!dataPrimary) return 0
+        if (dataPrimary?.length <= 5) return 50
+        if (dataPrimary?.length >= 5 && dataPrimary?.length <= 10) return 40
+        if (dataPrimary?.length >= 11 && dataPrimary?.length <= 15) return 20
+        if (dataPrimary?.length >= 16) return 20
+    }
+
     return (
         <ResponsiveContainer width="80%" height={300}>
             <BarChart data={data}>
                 <XAxis dataKey="name" />
                 <YAxis />
                 <Tooltip />
-                <Bar dataKey="value" fill="#1677ff" barSize={50} />
+                <Bar dataKey="value" fill="#1677ff" barSize={setWidthBar()} />
             </BarChart>
         </ResponsiveContainer>
     );

@@ -4,26 +4,7 @@ import { Doughnut } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export const data = {
-  labels: ['Desktop', 'Mobile', 'Tablet'],
-  datasets: [
-    {
-      label: '# of Votes',
-      data: [120, 158, 20,],
-      backgroundColor: [
-        '#0088FE',
-        '#00C49F',
-        '#FFBB28',
-      ],
-      borderColor: [
-        '#0088FE',
-        '#00C49F',
-        '#FFBB28',
-      ],
-      borderWidth: 1,
-    },
-  ],
-};
+
 
 const options = {
   plugins: {
@@ -32,13 +13,36 @@ const options = {
       font: {
         size: 14,
       },
+      formatter: (value: any, context: any) => {
+        const data = context.chart.data.datasets[0].data;
+        const total = data.reduce((acc: any, val: any) => acc + val, 0);
+        const percentage = (value / total * 100).toFixed(1);
+        return `${percentage}%`;
+      },
     },
   },
 };
 
-function DoughnutChart() {
+function DoughnutChart({
+  data
+}: { data?: any }) {
+
+  const dataExample = {
+    labels: ['Desktop', 'Mobile', 'Tablet'],
+    datasets: [
+      {
+        label: 'users: ',
+        data: [120, 158, 20,],
+        backgroundColor: [
+          '#0088FE',
+          '#00C49F',
+          '#FFBB28',
+        ],
+      },
+    ],
+  };
   return (
-    <Doughnut data={data} options={options} className='h-full' />
+    <Doughnut data={data || dataExample} options={options} className='h-full' />
   )
 }
 

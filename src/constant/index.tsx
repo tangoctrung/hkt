@@ -7,3 +7,13 @@ export const defaultRange: [Dayjs, Dayjs] = [
   dayjs().subtract(7, 'day').startOf('day'),
   dayjs().endOf('day'),
 ];
+
+export const COLORS = [
+  "#0088FE", "#00C49F", "#FFBB28", "#FF8042",
+  "#1677ff", "#13c2c2", "#52c41a", "#faad14", "#f5222d",
+  "#722ed1", "#eb2f96", "#fa541c", "#2f54eb", "#a0d911",
+  "#08979c", "#d3adf7", "#ffc53d", "#597ef7", "#9254de",
+  "#ff85c0", "#ff7a45", "#36cfc9", "#73d13d", "#ffec3d",
+  "#ff4d4f", "#b37feb", "#ffd666", "#ff6f91", "#6be585",
+  "#5cdbd3", "#bae637", "#ffd3b6", "#ff9c6e", "#ffc0cb"
+]

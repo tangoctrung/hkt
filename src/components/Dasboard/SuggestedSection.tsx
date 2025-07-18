@@ -5,31 +5,36 @@ import UserRetentionChart from './Components/UserRetentionChart';
 import NewUsersByChannelChart from './Components/NewUsersByChannelChart';
 import UserActivityChart from './Components/UserActivityChart';
 
-const settings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 2.5,
-    slidesToScroll: 2,
-    arrows: true,
-    responsive: [
-        {
-            breakpoint: 1024,
-            settings: {
-                slidesToShow: 2,
-            }
-        },
-        {
-            breakpoint: 640,
-            settings: {
-                slidesToShow: 1,
-            }
-        }
-    ]
-};
-
-export default function SuggestedSection() {
+export default function SuggestedSection({
+    data,
+    loading
+}: {
+    data: any;
+    loading?: boolean;
+}) {
     const [ready, setReady] = useState(false);
+    const settings = {
+        dots: true,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 2.5,
+        slidesToScroll: 2,
+        arrows: true,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 640,
+                settings: {
+                    slidesToShow: 1,
+                }
+            }
+        ],
+    };
 
     useEffect(() => {
         const frame = requestAnimationFrame(() => setReady(true));
@@ -39,19 +44,19 @@ export default function SuggestedSection() {
     if (!ready) return null;
 
     return (
-        <div className="mt-6 w-full overflow-hidden h-full">
+        <div className="w-full overflow-hidden">
             <Slider {...settings} className='w-full'>
-                <div className="p-[10px] min-w-0 overflow-hidden h-[420px]">
+                <div className="w-full mr-4 shadow-md overflow-hidden h-[420px]">
                     <RetentionByCohortChart />
                 </div>
-                <div className="p-[10px] min-w-0 overflow-hidden h-[420px]">
+                <div className="w-full shadow-md overflow-hidden h-[420px]">
                     <UserRetentionChart />
                 </div>
-                <div className="p-[10px] min-w-0 overflow-hidden h-[420px]">
-                    <NewUsersByChannelChart />
+                <div className="w-full shadow-md overflow-hidden h-[420px]">
+                    <NewUsersByChannelChart data={data?.newUsersByChannel || []} />
                 </div>
-                <div className="p-[10px] min-w-0 overflow-hidden h-[420px]">
-                    <UserActivityChart />
+                <div className="w-full shadow-md overflow-hidden h-[420px]">
+                    <UserActivityChart data={data?.userActivityOverTime} />
                 </div>
             </Slider >
         </div >

@@ -28,13 +28,6 @@ export default function TimePickerCustom({
     value: [Dayjs, Dayjs];
   }[] = [
       {
-        label: 'Hôm nay',
-        value: [
-          dayjs().subtract(0, 'day').startOf('day'),
-          dayjs().subtract(0, 'day').endOf('day'),
-        ],
-      },
-      {
         label: 'Hôm qua',
         value: [
           dayjs().subtract(1, 'day').startOf('day'),
@@ -86,12 +79,6 @@ export default function TimePickerCustom({
       },
     ];
 
-  // const defaultRange: [Dayjs, Dayjs] = [
-  //   dayjs().subtract(7, 'day').startOf('day'),
-  //   dayjs().endOf('day'),
-  // ];
-
-  // const [rangeValue, setRangeValue] = useState<[Dayjs, Dayjs] | null>(defaultRange);
   const [label, setLabel] = useState<string>('7 ngày trước');
 
   const handleChange = (value: any) => {
@@ -110,7 +97,7 @@ export default function TimePickerCustom({
   };
 
   return (
-    <div className='flex items-center bg-white px-4 rounded-lg gap-2'>
+    <div className='flex items-center bg-white px-4 rounded-lg gap-2 shadow-md'>
       <p className='font-semibold'>{label}</p>
       <RangePicker
         presets={presets}

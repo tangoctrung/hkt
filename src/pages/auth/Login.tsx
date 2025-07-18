@@ -1,13 +1,13 @@
 import { Input, notification } from 'antd'
 import React, { useMemo, useState } from 'react'
-import { LogoApp } from '../../assets/svg/LogoApp'
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { Button } from 'antd';
 // import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { NotificationPlacement } from 'antd/es/notification/interface';
 import { DataLoginRequest } from '../../types/DataRequest';
-import { validateEmail } from '../../utils';
+import LogoApp from "../../assets/images/logo.png";
+
 const Context = React.createContext({ name: 'Default' });
 
 function Login() {
@@ -22,7 +22,7 @@ function Login() {
   // const dispatch = useDispatch()
   const openNotificationFail = (placement: NotificationPlacement) => {
     api.error({
-      message: `Thông báo Đăng nhập`,
+      message: `Thông báo`,
       description: <Context.Consumer>{({ name }) => name}</Context.Consumer>,
       placement,
     });
@@ -38,9 +38,9 @@ function Login() {
     if (data.email === "" || data.password === "") {
       return "Bạn chưa điền đầy đủ thông tin, hãy kiểm tra lại"
     }
-    if (!validateEmail(data.email)) {
-      return "Email không hợp lệ, hãy kiểm tra lại"
-    }
+    // if (!validateEmail(data.email)) {
+    //   return "Email không hợp lệ, hãy kiểm tra lại"
+    // }
     if (data.password?.length < 8) {
       return "Mật khẩu không hợp lệ, hãy kiểm tra lại"
     }
@@ -55,7 +55,13 @@ function Login() {
       return;
     }
     setIsLoading(true);
-    navigate("/")
+    if (dataLogin.email === "admin" && dataLogin.password === "dragonland@123") {
+      navigate("/")
+    } else {
+      setMessageNoti("Email hoặc mật khẩu không chính xác")
+      openNotificationFail("topRight")
+    }
+    setIsLoading(false);
     // loginUser(dataLogin)
     //   .then((res) => {
     //     if (res?.status === 200) {
@@ -86,19 +92,17 @@ function Login() {
     <Context.Provider value={contextValue}>
       {contextHolder}
       <div className='w-[100vw] h-[100vh] flex items-center justify-center'>
-        <div className='w-[500px] h-fit rounded-lg p-5 formLogin' >
-          <div className='w-full flex justify-center'>
-            <div className='flex items-center'>
-              <LogoApp />
-              <p className='ml-3 font-semibold text-2xl'>Đăng nhập - HKT</p>
-            </div>
+        <div className='max-w-[400px] w-[90%] h-fit rounded-lg p-5 formLogin' >
+          <div className='w-full flex justify-center mb-3'>
+            <img src={LogoApp} alt="" className='h-20 w-20 object-cover overflow-hidden' />
           </div>
+          <p className='text-center font-semibold text-2xl'>Đăng nhập - Dragonland</p>
           <p className='italic text-gray-400 mt-2 text-center'>Đăng nhập hệ thống với tư cách admin hoặc quản lý</p>
           <div className='mt-[40px]'>
             <div className='flex justify-center'>
               <Input
                 placeholder="Nhập username hoặc email"
-                size='large' style={{ width: "80%", height: "50px" }}
+                size='large' style={{ width: "90%", height: "50px" }}
                 name='email'
                 onChange={handleChangeInfo}
               />
@@ -107,7 +111,7 @@ function Login() {
               <Input.Password
                 placeholder="Nhập password"
                 size='large'
-                style={{ width: "80%", height: "50px" }}
+                style={{ width: "90%", height: "50px" }}
                 name='password'
                 onChange={handleChangeInfo}
                 iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}

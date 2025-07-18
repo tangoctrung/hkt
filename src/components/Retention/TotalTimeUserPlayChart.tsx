@@ -35,7 +35,7 @@ function TotalTimeUserPlayChart() {
     },
   ];
   return (
-    <Card className='shadow-md h-[480px] overflow-y-scroll viewScrollNone' title="Total time user play">
+    <Card className='shadow-md h-[480px]' title="Total time user play">
       <div className='h-[380px] flex justify-center'>
         <SimpleAreaChart dataPrimary={dataExample} unit='m' />
       </div>

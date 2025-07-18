@@ -34,7 +34,7 @@ const options: ChartOptions<'bar'> = {
     datalabels: {
       color: '#fff',
       font: {
-        size: 14,
+        size: 13,
       },
     },
   },
@@ -53,12 +53,18 @@ const options: ChartOptions<'bar'> = {
 };
 
 
-
 export default function HorizontalBarChart({ labelsPrimary, dataPrimary }: {
   labelsPrimary?: string[];
   dataPrimary?: any[]
 }) {
 
+  const setHeightBar = () => {
+    if (!labelsPrimary) return 0
+    if (labelsPrimary?.length <= 4) return 40
+    if (labelsPrimary?.length >= 5 && labelsPrimary?.length <= 10) return 26
+    if (labelsPrimary?.length >= 11 && labelsPrimary?.length <= 15) return 18
+    if (labelsPrimary?.length >= 16) return 10
+  }
   const labels = ['Chrome', 'MS Edge', 'Firefox', "Cốc cốc"];
   const data = {
     labels: labelsPrimary || labels,
@@ -73,8 +79,8 @@ export default function HorizontalBarChart({ labelsPrimary, dataPrimary }: {
           '#0088FE',
         ],
         borderWidth: 1,
-        barThickness: 50,
-        categoryPercentage: 0.6, // 👈 giảm spacing giữa các rows
+        barThickness: setHeightBar(),
+        categoryPercentage: 0.6,
         barPercentage: 0.8,
       },
     ],

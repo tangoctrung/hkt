@@ -38,7 +38,7 @@ function NumberUserNewAndRetentionChart() {
     },
   ];
   return (
-    <Card className='shadow-md h-[480px] overflow-y-scroll viewScrollNone' title="User retention">
+    <Card className='shadow-md h-[480px]' title="User retention">
       <div className='h-[380px] flex justify-center'>
         <LineRoundChart dataKey={dataKey} dataPrimary={dataExample} />
       </div>

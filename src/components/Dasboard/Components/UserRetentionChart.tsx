@@ -1,10 +1,10 @@
 import { Card } from 'antd';
-import LineChart from '../../Chart/LineChart';
+import LineRoundChart from '../../Chart/LineRoundChart';
 
 export default function UserRetentionChart() {
     return (
-        <Card title="User retention" className='h-[400px] shadow-md' bodyStyle={{ height: "350px" }}>
-            <LineChart title="day" />
+        <Card title="User retention" className='h-full' bodyStyle={{ height: "350px" }}>
+            <LineRoundChart />
         </Card>
     );
 }

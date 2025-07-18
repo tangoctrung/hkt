@@ -12,6 +12,8 @@ import DashboardGA from '../DashboardGA';
 import ReportUser from '../ReportUser';
 import ReportOther from '../ReportOther';
 import Retention from '../Retention';
+import LogoApp from "../../assets/images/logo.png";
+
 
 type MenuItem = Required<MenuProps>['items'][number];
 const { Header, Content, Sider } = Layout;
@@ -101,9 +103,8 @@ const HomeWork: React.FC = () => {
         }}
       >
         <div className="mb-[20px] flex flex-col items-center text-white">
-          <img src={authUser?.avatar || NO_AVATAR} alt='avatar' className='w-20 h-20 rounded-full object-cover' />
+          <img src={authUser?.avatar || LogoApp} alt='avatar' className='w-20 h-20 rounded-full object-cover' />
           <b className='text-lg'>{authUser?.username || "admin"}</b>
-          <p>Chào mừng bạn trở lại</p>
         </div>
         <Menu
           theme="dark"
@@ -128,11 +129,13 @@ const HomeWork: React.FC = () => {
           </div>
         </Header>
         <Content style={{ margin: '0 0 0 30px' }}>
-          <div style={{ padding: 0, paddingLeft: 12, background: "#edf0ef" }} className="h-[calc(100vh-66px)]">
-            {tab === "2" && <DashboardGA />}
-            {tab === "3" && <Retention />}
-            {tab === "4" && <ReportUser />}
-            {tab === "5" && <ReportOther />}
+          <div className='h-[calc(100vh-66px)]'>
+            <div style={{ background: "#edf0ef" }} className="px-[5%] h-full overflow-y-scroll viewScroll">
+              {tab === "2" && <DashboardGA />}
+              {tab === "3" && <Retention />}
+              {tab === "4" && <ReportUser />}
+              {tab === "5" && <ReportOther />}
+            </div>
           </div>
         </Content>
       </Layout>

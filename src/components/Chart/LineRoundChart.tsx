@@ -40,8 +40,10 @@ export default function LineRoundChart({ dataKey, dataPrimary }: {
   ];
 
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer width="100%" height="100%" key={"lineRoundChart"}>
       <LineChart
+        key={"lineRoundChart"}
+        dataKey={""}
         width={500}
         height={400}
         data={dataPrimary || data}
@@ -64,3 +66,23 @@ export default function LineRoundChart({ dataKey, dataPrimary }: {
     </ResponsiveContainer>
   );
 }
+
+
+const CustomTooltip = ({ active, payload }: any) => {
+  if (active && payload && payload.length > 0) {
+    const item = payload[0].payload;
+    return (
+      <div className="bg-white p-2 border rounded shadow">
+        <p>{new Date(item.date).toDateString()}</p>
+        {payload && payload?.map((item: any, index: number) => (
+          <p key={index}
+            style={{ color: item?.color }}>
+            {item?.dataKey}: {item?.payload[item?.dataKey]}
+          </p>
+        ))}
+      </div>
+    );
+  }
+
+  return null;
+};
