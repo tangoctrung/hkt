@@ -59,7 +59,6 @@ export default function LineRoundChart({ dataKey, dataPrimary, typeTooltip }: {
         <XAxis dataKey="name" />
         <YAxis />
         {typeTooltip === "nocustom" ? <Tooltip /> : <Tooltip content={<CustomTooltip />} />}
-        <Tooltip />
         <Legend />
         {keys?.map((item: string, index: number) => (
           <Line type="monotone" dataKey={item} stroke={colors[index]} />

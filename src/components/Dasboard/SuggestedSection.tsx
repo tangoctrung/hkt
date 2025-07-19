@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import Slider from 'react-slick';
-import RetentionByCohortChart from './Components/RetentionByCohortChart';
 import UserRetentionChart from './Components/UserRetentionChart';
 import NewUsersByChannelChart from './Components/NewUsersByChannelChart';
 import UserActivityChart from './Components/UserActivityChart';
@@ -46,11 +45,8 @@ export default function SuggestedSection({
     return (
         <div className="w-full overflow-hidden">
             <Slider {...settings} className='w-full'>
-                <div className="w-full mr-4 shadow-md overflow-hidden h-[420px]">
-                    <RetentionByCohortChart />
-                </div>
                 <div className="w-full shadow-md overflow-hidden h-[420px]">
-                    <UserRetentionChart />
+                    <UserRetentionChart data={data?.userRetention || []} />
                 </div>
                 <div className="w-full shadow-md overflow-hidden h-[420px]">
                     <NewUsersByChannelChart data={data?.newUsersByChannel || []} />

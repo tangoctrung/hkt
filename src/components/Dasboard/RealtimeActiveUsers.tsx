@@ -38,6 +38,7 @@ export default function RealtimeActiveUsers({
             ...item,
             users: formatNumberEN(item?.count) || 0
         }))
+        dataTable.sort((x, y) => y?.count - x?.count);
     }
 
     return (

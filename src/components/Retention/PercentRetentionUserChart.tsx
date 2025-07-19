@@ -2,42 +2,25 @@ import { Card } from 'antd'
 import React from 'react'
 import SimpleAreaChart from '../Chart/SimpleAreaChart';
 
-function PercentRetentionUserChart() {
+function PercentRetentionUserChart({
+  data,
+  loading
+}: {
+  data: any[];
+  loading?: boolean;
+}) {
 
-  const dataExample = [
-    {
-      name: 'Ngày 1',
-      time: 0.4,
-    },
-    {
-      name: 'Ngày 4',
-      time: 0.7,
-    },
-    {
-      name: 'Ngày 7',
-      time: 0.5,
-    },
-    {
-      name: 'Ngày 14',
-      time: 0.65,
-    },
-    {
-      name: 'Ngày 20',
-      time: 1,
-    },
-    {
-      name: 'Ngày 29',
-      time: 1.2,
-    },
-    {
-      name: 'Ngày 42',
-      time: 0.9,
-    },
-  ];
+  const firstCount = data?.[0]?.count || 1;
+  const dataPrimary = data?.map((item: any, index: number) => ({
+    ...item,
+    name: "Day " + item?.returnDay,
+    value: index === 0 ? 100 : ((item?.count * 100) / firstCount).toFixed(2),
+  }));
+
   return (
-    <Card className='shadow-md h-[480px]' title="Percent user retention">
+    <Card className='shadow-md h-[480px]' title="Users retention">
       <div className='h-[380px] flex justify-center'>
-        <SimpleAreaChart dataPrimary={dataExample} unit='%' />
+        <SimpleAreaChart dataPrimary={dataPrimary} unit='%' />
       </div>
     </Card>
   )

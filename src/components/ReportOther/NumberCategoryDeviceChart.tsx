@@ -11,7 +11,7 @@ function NumberCategoryDeviceChart({
   loading?: boolean;
 }) {
   const dataPrimary = {
-    labels: data?.map(item => item?.devices),
+    labels: data?.map(item => "web-" + item?.devices),
     datasets: [
       {
         label: 'users: ',

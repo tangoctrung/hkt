@@ -12,12 +12,13 @@ function NumberUserActivePlatform({
   loading?: boolean;
 }) {
 
+  const totalUsers = data?.reduce((sum: number, item: any) => sum + item.count, 0);
   const dataPrimary = {
-    labels: data?.map(item => item?.platform),
+    labels: ["website"],
     datasets: [
       {
         label: '',
-        data: data?.map(item => item?.count),
+        data: [totalUsers],
         backgroundColor: COLORS.slice(0, data?.length),
       },
     ],

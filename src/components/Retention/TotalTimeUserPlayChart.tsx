@@ -1,43 +1,25 @@
 import { Card } from 'antd'
 import React from 'react'
 import SimpleAreaChart from '../Chart/SimpleAreaChart';
+import { formatTimeStringToDDMM } from '../../utils';
 
-function TotalTimeUserPlayChart() {
+function TotalTimeUserPlayChart({
+  data,
+  loading
+}: {
+  data: any[];
+  loading?: boolean;
+}) {
 
-  const dataExample = [
-    {
-      name: 'Ngày 1',
-      time: 23,
-    },
-    {
-      name: 'Ngày 4',
-      time: 7,
-    },
-    {
-      name: 'Ngày 7',
-      time: 24,
-    },
-    {
-      name: 'Ngày 14',
-      time: 19,
-    },
-    {
-      name: 'Ngày 20',
-      time: 30,
-    },
-    {
-      name: 'Ngày 29',
-      time: 46,
-    },
-    {
-      name: 'Ngày 42',
-      time: 32,
-    },
-  ];
+  const dataPrimary = data?.map((item: any) => ({
+    ...item,
+    name: formatTimeStringToDDMM(item?.date),
+    value: item?.avgEngagementTimeSec,
+  }));
   return (
     <Card className='shadow-md h-[480px]' title="Total time user play">
       <div className='h-[380px] flex justify-center'>
-        <SimpleAreaChart dataPrimary={dataExample} unit='m' />
+        <SimpleAreaChart dataPrimary={dataPrimary} unit='s' isCustomDate={true} />
       </div>
     </Card>
   )

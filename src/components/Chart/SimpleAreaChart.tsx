@@ -4,37 +4,38 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 const data = [
   {
     name: 'Ngày 1',
-    time: 4000,
+    value: 4000,
   },
   {
     name: 'Ngày 4',
-    time: 3000,
+    value: 3000,
   },
   {
     name: 'Ngày 7',
-    time: 2000,
+    value: 2000,
   },
   {
     name: 'Ngày 14',
-    time: 2780,
+    value: 2780,
   },
   {
     name: 'Ngày 20',
-    time: 1890,
+    value: 1890,
   },
   {
     name: 'Ngày 29',
-    time: 2390,
+    value: 2390,
   },
   {
     name: 'Ngày 42',
-    time: 3490,
+    value: 3490,
   },
 ];
 
-export default function SimpleAreaChart({ dataPrimary, unit }: {
+export default function SimpleAreaChart({ dataPrimary, unit, isCustomDate }: {
   dataPrimary?: any[];
-  unit: string
+  unit: string;
+  isCustomDate?: boolean;
 }) {
   return (
     <ResponsiveContainer width="100%" height="100%">
@@ -52,9 +53,23 @@ export default function SimpleAreaChart({ dataPrimary, unit }: {
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis tickFormatter={(value) => `${value} ` + unit} />
-        <Tooltip />
-        <Area type="monotone" dataKey="time" stroke="#8884d8" fill="#8884d8" />
+        <Tooltip content={<CustomTooltip unit={unit} isCustomDate={isCustomDate} />} />
+        <Area type="monotone" dataKey="value" stroke="#8884d8" fill="#8884d8" />
       </AreaChart>
     </ResponsiveContainer>
   );
 }
+
+const CustomTooltip = ({ active, payload, unit, isCustomDate }: any) => {
+  if (active && payload && payload.length > 0) {
+    const item = payload[0].payload;
+    return (
+      <div className="bg-white p-2 border rounded shadow">
+        <p>{isCustomDate ? new Date(item.date).toDateString() : item?.name}</p>
+        <p>{item?.value}{unit}</p>
+      </div>
+    );
+  }
+
+  return null;
+};

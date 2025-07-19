@@ -32,6 +32,7 @@ export default function ActiveUsersByCountryChart({
             countryCode: convertNameCountry(item?.country),
             users: item?.count || 0
         }))
+        dataTable.sort((x, y) => y?.count - x?.count);
         dataTable.forEach(item => {
             dataMap[item.countryCode] = item.users || 0;
         });
