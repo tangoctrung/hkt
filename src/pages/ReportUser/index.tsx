@@ -8,9 +8,11 @@ import { Dayjs } from 'dayjs'
 import { defaultRange } from '../../constant'
 import { getDataSummaryService } from '../../endpoint/user/userService'
 import Loading from '../../components/common/Loading';
+import { getDatePicker } from '../../utils/date-picker';
 
 function ReportUser() {
-  const [rangeValue, setRangeValue] = useState<[Dayjs, Dayjs]>(defaultRange)
+  const dataDateCache = getDatePicker()
+  const [rangeValue, setRangeValue] = useState<[Dayjs, Dayjs]>((dataDateCache && dataDateCache?.length > 0) ? dataDateCache : defaultRange)
   const [data, setData] = useState<any>()
   const [loading, setLoading] = useState<boolean>(true)
 
@@ -52,7 +54,7 @@ function ReportUser() {
       </div>
       <div className='mt-4 w-full flex flex-col md:flex-row justify-center'>
         <div className='w-full md:w-[70%] p-[10px]'>
-          <ActiveUsersByCountryChart data={data?.topCountries} />
+          <ActiveUsersByCountryChart data={data?.activeUsersByCountry || []} />
         </div>
       </div>
       {loading && <Loading />}

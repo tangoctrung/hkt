@@ -6,10 +6,10 @@ import UserActivityChart from './Components/UserActivityChart';
 
 export default function SuggestedSection({
     data,
-    loading
+    distanceDate
 }: {
     data: any;
-    loading?: boolean;
+    distanceDate: number;
 }) {
     const [ready, setReady] = useState(false);
     const settings = {
@@ -46,7 +46,7 @@ export default function SuggestedSection({
         <div className="w-full overflow-hidden">
             <Slider {...settings} className='w-full'>
                 <div className="w-full shadow-md overflow-hidden h-[420px]">
-                    <UserRetentionChart data={data?.userRetention || []} />
+                    <UserRetentionChart data={data?.userRetention?.length > distanceDate ? data?.userRetention?.slice(0, distanceDate) : data?.userRetention} />
                 </div>
                 <div className="w-full shadow-md overflow-hidden h-[420px]">
                     <NewUsersByChannelChart data={data?.newUsersByChannel || []} />

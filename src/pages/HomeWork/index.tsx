@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { InsertRowAboveOutlined, UserSwitchOutlined, DotChartOutlined, RollbackOutlined } from '@ant-design/icons';
 import { Layout, Menu, theme } from 'antd';
 import { Button } from 'antd';
@@ -51,6 +51,29 @@ const HomeWork: React.FC = () => {
     getItem('User report', '4', <UserSwitchOutlined />, null),
     getItem('Other reports', '5', <DotChartOutlined />, null),
   ];
+  const siderRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        siderRef.current &&
+        !siderRef.current.contains(event.target as Node)
+      ) {
+        setCollapsed(true);
+      }
+    };
+
+    if (!collapsed) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [collapsed]);
+
   const handleSwitchTab = (e: any) => {
     setCollapsed(true)
     setTab(e?.key)
@@ -86,6 +109,7 @@ const HomeWork: React.FC = () => {
   return (
     <Layout style={{ height: "100vh", position: 'relative' }}>
       <Sider
+        ref={siderRef}
         collapsible
         collapsed={collapsed}
         onCollapse={(value) => setCollapsed(value)}

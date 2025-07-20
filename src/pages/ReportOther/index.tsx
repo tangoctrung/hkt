@@ -8,9 +8,11 @@ import { Dayjs } from 'dayjs'
 import { defaultRange } from '../../constant'
 import { getDataSummaryService } from '../../endpoint/user/userService'
 import Loading from '../../components/common/Loading'
+import { getDatePicker } from '../../utils/date-picker'
 
 function ReportOther() {
-  const [rangeValue, setRangeValue] = useState<[Dayjs, Dayjs]>(defaultRange)
+  const dataDateCache = getDatePicker()
+  const [rangeValue, setRangeValue] = useState<[Dayjs, Dayjs]>((dataDateCache && dataDateCache?.length > 0) ? dataDateCache : defaultRange)
   const [data, setData] = useState<any>()
   const [loading, setLoading] = useState<boolean>(true)
 

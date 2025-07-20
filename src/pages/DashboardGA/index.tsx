@@ -10,9 +10,11 @@ import { Dayjs } from 'dayjs';
 import { defaultRange } from '../../constant';
 import { getDataSummaryService } from '../../endpoint/user/userService';
 import Loading from '../../components/common/Loading';
+import { getDatePicker } from '../../utils/date-picker';
 
 export default function DashboardGA() {
-    const [rangeValue, setRangeValue] = useState<[Dayjs, Dayjs]>(defaultRange)
+    const dataDateCache = getDatePicker()
+    const [rangeValue, setRangeValue] = useState<[Dayjs, Dayjs]>((dataDateCache && dataDateCache?.length > 0) ? dataDateCache : defaultRange)
     const [data, setData] = useState<any>()
     const [loading, setLoading] = useState<boolean>(true)
 
@@ -33,6 +35,8 @@ export default function DashboardGA() {
         getDataSummary();
     }, [rangeValue])
 
+    const distanceDate = rangeValue?.length > 1 ? rangeValue[1].diff(rangeValue[0], 'day') : 0
+
     return (
         <div className="p-4 space-y-6 w-full">
             <div className='w-full flex justify-end'>
@@ -44,15 +48,15 @@ export default function DashboardGA() {
                     <ActiveUserLineChart data={data?.chartData || []} />
                 </div>
                 <div className='h-full'>
-                    <RealtimeActiveUsers lastDay={rangeValue[1].subtract(1, 'day').startOf('day')} />
+                    <RealtimeActiveUsers data={data?.topCountries || []} />
                 </div>
             </div>
             <div className="w-full overflow-y-hidden">
-                <SuggestedSection data={data} />
+                <SuggestedSection data={data} distanceDate={distanceDate} />
             </div>
             <div className='w-full gap-6 flex flex-col md:flex-row'>
                 <div className='w-full md:w-[60%]'>
-                    <ActiveUsersByCountryChart data={data?.topCountries} />
+                    <ActiveUsersByCountryChart data={data?.activeUsersByCountry || []} />
                 </div>
                 <div className='w-full md:w-[40%]'>
                     <EventCountChart data={data?.eventSummary || []} />

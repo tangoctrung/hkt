@@ -3,6 +3,7 @@ import { DatePicker } from 'antd';
 import dayjs from 'dayjs';
 import type { Dayjs } from 'dayjs';
 import isoWeek from 'dayjs/plugin/isoWeek';
+import { getLabelDatePicker, setDatePicker, setLabelDatePicker } from '../../../utils/date-picker';
 dayjs.extend(isoWeek);
 
 const { RangePicker } = DatePicker;
@@ -79,19 +80,19 @@ export default function TimePickerCustom({
       },
     ];
 
-  const [label, setLabel] = useState<string>('7 ngày trước');
+  const [label, setLabel] = useState<string>(getLabelDatePicker() || '7 ngày trước');
 
   const handleChange = (value: any) => {
     if (!setRangeValue) return;
     if (value && value[0] && value[1]) {
       setRangeValue(value as [Dayjs, Dayjs]);
-
+      setDatePicker(value as [Dayjs, Dayjs])
       const found = presets.find((preset) =>
         isSameRange(preset.value, value as [Dayjs, Dayjs])
       );
       setLabel(found?.label || 'Tuỳ chỉnh');
+      setLabelDatePicker(found?.label || 'Tuỳ chỉnh')
     } else {
-      // setRangeValue(null);
       setLabel('');
     }
   };

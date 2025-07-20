@@ -7,9 +7,11 @@ import { Dayjs } from 'dayjs';
 import { defaultRange } from '../../constant';
 import { getDataSummaryService } from '../../endpoint/user/userService';
 import Loading from '../../components/common/Loading';
+import { getDatePicker } from '../../utils/date-picker';
 
 function Retention() {
-  const [rangeValue, setRangeValue] = useState<[Dayjs, Dayjs]>(defaultRange)
+  const dataDateCache = getDatePicker()
+  const [rangeValue, setRangeValue] = useState<[Dayjs, Dayjs]>((dataDateCache && dataDateCache?.length > 0) ? dataDateCache : defaultRange)
   const [data, setData] = useState<any>()
   const [loading, setLoading] = useState<boolean>(true)
 
@@ -30,6 +32,8 @@ function Retention() {
     getDataSummary();
   }, [rangeValue])
 
+  const distanceDate = rangeValue?.length > 1 ? rangeValue[1].diff(rangeValue[0], 'day') : 0
+
   return (
     <div className="p-4 space-y-6 w-full">
       <div className='w-full flex justify-end'>
@@ -40,7 +44,7 @@ function Retention() {
           <NumberUserNewAndRetentionChart data={data?.chartData || []} />
         </div>
         <div className="w-full md:w-[40%] p-[10px] h-[480px]">
-          <PercentRetentionUserChart data={data?.userRetention || []} />
+          <PercentRetentionUserChart data={data?.userRetention?.length > distanceDate ? data?.userRetention?.slice(0, distanceDate) : data?.userRetention} />
         </div>
       </div>
       <div className='mt-4 w-full gap-6 flex flex-col md:flex-row'>
