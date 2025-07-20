@@ -17,7 +17,7 @@ function TotalTimeUserPlayChart({
     value: item?.avgEngagementTimeSec,
   }));
   return (
-    <Card className='shadow-md h-[480px]' title="Total time user play">
+    <Card className='shadow-md h-[480px]' title="User engagement">
       <div className='h-[380px] flex justify-center'>
         <SimpleAreaChart dataPrimary={dataPrimary} unit='s' isCustomDate={true} />
       </div>
