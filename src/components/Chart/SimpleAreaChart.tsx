@@ -33,6 +33,8 @@ const data = [
 ];
 
 export default function SimpleAreaChart({ dataPrimary, unit, isCustomDate }: {
+
+
   dataPrimary?: any[];
   unit: string;
   isCustomDate?: boolean;

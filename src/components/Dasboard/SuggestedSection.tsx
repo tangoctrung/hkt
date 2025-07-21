@@ -41,17 +41,18 @@ export default function SuggestedSection({
     }, []);
 
     if (!ready) return null;
+    console.log("distanceDate", data?.userRetention?.length, distanceDate);
 
     return (
         <div className="w-full overflow-hidden">
             <Slider {...settings} className='w-full'>
-                <div className="w-full shadow-md overflow-hidden h-[420px]">
-                    <UserRetentionChart data={data?.userRetention?.length > distanceDate ? data?.userRetention?.slice(0, distanceDate) : data?.userRetention} />
+                <div className="w-full shadow-md overflow-hidden h-[440px]">
+                    <UserRetentionChart data={data?.userRetention} />
                 </div>
-                <div className="w-full shadow-md overflow-hidden h-[420px]">
+                <div className="w-full shadow-md overflow-hidden h-[440px]">
                     <NewUsersByChannelChart data={data?.newUsersByChannel || []} />
                 </div>
-                <div className="w-full shadow-md overflow-hidden h-[420px]">
+                <div className="w-full shadow-md overflow-hidden h-[440px]">
                     <UserActivityChart data={data?.userActivityOverTime} />
                 </div>
             </Slider >

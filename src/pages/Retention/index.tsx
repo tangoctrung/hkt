@@ -44,7 +44,7 @@ function Retention() {
           <NumberUserNewAndRetentionChart data={data?.chartData || []} />
         </div>
         <div className="w-full md:w-[40%] p-[10px] h-[480px]">
-          <PercentRetentionUserChart data={data?.userRetention?.length > distanceDate ? data?.userRetention?.slice(0, distanceDate) : data?.userRetention} />
+          <PercentRetentionUserChart data={data?.userRetention} />
         </div>
       </div>
       <div className='mt-4 w-full gap-6 flex flex-col md:flex-row'>
