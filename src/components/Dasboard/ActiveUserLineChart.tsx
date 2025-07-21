@@ -26,7 +26,13 @@ export default function ActiveUserLineChart({
             <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={dataPrimary || dataExample}>
                     <XAxis dataKey="keyDate" />
-                    <YAxis />
+                    <YAxis
+                        tickFormatter={(value) => {
+                            if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(1)}M`;
+                            if (value >= 1_000) return `${(value / 1_000).toFixed(0)}K`;
+                            return value.toString();
+                        }}
+                    />
                     <Tooltip content={<CustomTooltip />} />
                     <Line
                         type="monotone"

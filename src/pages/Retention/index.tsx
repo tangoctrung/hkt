@@ -32,8 +32,6 @@ function Retention() {
     getDataSummary();
   }, [rangeValue])
 
-  const distanceDate = rangeValue?.length > 1 ? rangeValue[1].diff(rangeValue[0], 'day') : 0
-
   return (
     <div className="p-4 space-y-6 w-full">
       <div className='w-full flex justify-end'>

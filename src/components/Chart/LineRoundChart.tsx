@@ -57,7 +57,13 @@ export default function LineRoundChart({ dataKey, dataPrimary, typeTooltip }: {
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
-        <YAxis />
+        <YAxis
+          tickFormatter={(value) => {
+            if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(1)}M`;
+            if (value >= 1_000) return `${(value / 1_000).toFixed(0)}K`;
+            return value.toString();
+          }}
+        />
         {typeTooltip === "nocustom" ? <Tooltip /> : <Tooltip content={<CustomTooltip />} />}
         <Legend />
         {keys?.map((item: string, index: number) => (

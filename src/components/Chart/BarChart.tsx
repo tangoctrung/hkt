@@ -19,7 +19,13 @@ export default function CustomBarChart({ dataKey, dataPrimary }: { dataKey: stri
         <ResponsiveContainer width="80%" height={300}>
             <BarChart data={data}>
                 <XAxis dataKey="name" />
-                <YAxis />
+                <YAxis
+                    tickFormatter={(value) => {
+                        if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(1)}M`;
+                        if (value >= 1_000) return `${(value / 1_000).toFixed(0)}K`;
+                        return value.toString();
+                    }}
+                />
                 <Tooltip />
                 <Bar dataKey="value" fill="#1677ff" barSize={setWidthBar()} />
             </BarChart>
