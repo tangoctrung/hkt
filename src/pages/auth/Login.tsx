@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import { NotificationPlacement } from 'antd/es/notification/interface';
 import { DataLoginRequest } from '../../types/DataRequest';
 import LogoApp from "../../assets/images/logo.png";
+import { updateAuthUser } from '../../store/features/userSlice';
+import { useDispatch } from 'react-redux';
 
 const Context = React.createContext({ name: 'Default' });
 
@@ -19,7 +21,7 @@ function Login() {
   })
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const openNotificationFail = (placement: NotificationPlacement) => {
     api.error({
       message: `Thông báo`,
@@ -55,8 +57,17 @@ function Login() {
       return;
     }
     setIsLoading(true);
-    if (dataLogin.email === "admin" && dataLogin.password === "dragonland@123") {
+    if ((dataLogin.email === "admin" && dataLogin.password === "dragonland@123") || (dataLogin.email === "admin1" && dataLogin.password === "dragonland@123") ||
+      (dataLogin.email === "admin2" && dataLogin.password === "dragonland@123") || (dataLogin.email === "admin3" && dataLogin.password === "dragonland@123")) {
+      let data: any = {
+        userId: "12344",
+        accessToken: "7f972857-a0a8-4d26-854b-9fc2735ed77a",
+        email: "admin@gmail.com",
+        username: dataLogin.email
+      }
+      dispatch(updateAuthUser(data))
       navigate("/")
+      localStorage.setItem("accessToken", "7f972857-a0a8-4d26-854b-9fc2735ed77a")
     } else {
       setMessageNoti("Email hoặc mật khẩu không chính xác")
       openNotificationFail("topRight")

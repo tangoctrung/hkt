@@ -17,7 +17,7 @@ function App() {
 
   const { authUser } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch()
-  const token = localStorage.getItem("accessToken")
+  const token = localStorage.getItem("accessToken") === "7f972857-a0a8-4d26-854b-9fc2735ed77a"
 
   const getMe = async () => {
     getInfoUser()
@@ -49,7 +49,7 @@ function App() {
     <Routes>
       <Route path="/login" element={!token ? <Login /> : <Navigate to="/" />} />
       <Route path="/register" element={!token ? <Register /> : <Navigate to="/" />} />
-      <Route path="/" element={<HomeWork />} />
+      <Route path="/" element={!token ? <Navigate to="/login" /> : <HomeWork />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
